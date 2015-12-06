@@ -14,11 +14,35 @@ The task was to analyze sales and time spent playing from a Uken mobile app
 game. The app was a fremium game meaning that it is free to play, but the
 company makes money from in app purchases.
 
+## Files
+
+* analysis.R		contains code to produce predictions and graphics.		
+			for predictions, we used a random forest algorithm
+			and gradient boosting algorithm.
+
+* Poster/		contains poster.pdf used in the case competition. Intended
+			printing size is 4 feet wide and 3 feet high. Poster	
+			can be produced by running pdflatex on poster.tex
+
+* predictions.csv	The predictions we submitted. These can be produced 
+			by running analysis.R (with some additional minor tuning 
+			for the randomForest and xgboost algorithms). However,
+			we haven't uploaded the data set and the code won't run
+			without it.
+
 ## Dataset
 
 I do not have permission to upload the Data to GitHub. The dataset contained
 300,000 rows (250,000 training rows with known target variables and 50,000 test
 rows with unknown target variables). The variables are described below.
+
+### Target variables 
+
+* return_player:	whether the user plays the game at end of observation period
+* revenue:			a measure of how much money the user spends
+* engagement:		a measure of how much time the user spends playing
+
+### Description of variables
 
 1. obs: 					row ID
 2. user_id:					user ID
@@ -65,25 +89,9 @@ rows with unknown target variables). The variables are described below.
 43. stage7:					date the user completed stage 7
 44. training0validation1:	0 if user is part of training set, 1 otherwise
 
+### Details
+
 If an event never occured, it is missing. There are also some missing values for
 country, gender, etc. The validation set had the columns revenue, engagement and
 return_player missing (the target variables), but these variables were all known
 for the training set. 
-
-* return_player:	whether the user plays the game at end of observation period
-* revenue:			a measure of how much money the user spends
-* engagement:		a measure of how much time the user spends playing
-
-## Files
-
-* analysis.R		contains code to produce predictions and graphics.		
-					for predictions, we used a random forest algorithm
-					and gradient boosting algorithm.
-* Poster/			contains poster.pdf used in the case competition. Intended
-					printing size is 4 feet wide and 3 feet high. Poster	
-					can be produced by running pdflatex on poster.tex
-* predictions.csv	The predictions we submitted. These can be produced 
-					by running analysis.R (with some additional minor tuning 
-					for the randomForest and xgboost algorithms). However,
-					we haven't uploaded the data set and the code won't run
-					without it.
